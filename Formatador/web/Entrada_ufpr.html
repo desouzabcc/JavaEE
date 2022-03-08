@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="pt-br">
+    <!--<![endif]-->
+    <head>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/jquery.idealforms.css">
+        <meta charset=utf-8 />
+        <title>O Formatador</title>
+        <style>
+            body {
+                max-width: 980px;
+                margin: 2em auto;
+                font: normal 15px/1.5 Arial, sans-serif;
+                color: #000000;
+                overflow-y: scroll;
+                background-color: #728eaa;
+                background: -moz-linear-gradient(top, #25303C 0%, #728EAA 100%); /* firefox */   
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C)); /* webkit */
+            }
+            .content {
+                margin: 0 30px;
+            }
+            .field.buttons button {
+                margin-right: .5em;
+            }
+            #invalid {
+                display: none;
+                float: left;
+                width: 290px;
+                margin-left: 120px;
+                margin-top: .5em;
+                color: #CC2A18;
+                font-size: 130%;
+                font-weight: bold;
+            }
+            .idealforms.adaptive #invalid {
+                margin-left: 0 !important;
+            }
+            .idealforms.adaptive .field.buttons label {
+                height: 0;
+            }
+        </style>
+        <link href="css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div align="center"><h1><img alt="O Formatador" src="img/logo.png"/></h1></div>
+        <div class="content">
+            <div class="idealsteps-container">
+                <nav class="idealsteps-nav"></nav>
+                <form action=Processa_Ufpr novalidate autocomplete="on" class="idealforms" method="POST">
+                    <div class="idealsteps-wrap"> 
+
+                        <!-- Step 1 -->
+                        <section class="idealsteps-step">
+                            <h1  align="center">Dados para preenchimento da Capa e Folha de Rosto</h1>
+                            <div class="field"><label class="main">Título do Trabalho:</label>
+                                <input name="name" type="text" data-idealforms-ajax="ajax.php"><span class="error"></span>
+                            </div>
+                            <div class="field"><label class="main">Sub-Título do Trabalho:</label>
+                                <input name="subname" type="text" data-idealforms-ajax="ajax.php"><span class="error"></span>
+                            </div>
+                            <div class="field"><label class="main">Integrante:</label>
+                                <input name="integrante" type="text" id="inputeste" size="20"/>
+                                <a  href="javascript:void(0)" id="remInput"><span aria-hidden="true"></span></a>
+                                <a href="javascript:void(0)" id="addInput"><span aria-hidden="true"></span>Adicionar Integrante</a>
+
+                                <div id="dynamicDiv"></div>
+                                <span class="error"></span> 
+                            </div>
+                            <div class="field">
+                                <label class="main">Date:</label>
+                                <input name="date" type="text" placeholder="mm/dd/yyyy" class="datepicker">
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Descrição:</label>
+                                <textarea name="descricao" cols="20" rows="5"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Cidade/UF:</label>
+                                <input name="cidade" type="text">
+                                <span class="error"></span> </div>
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="next">Next &raquo;</button>
+                            </div>  
+                        </section>
+
+                        <!-- Step 2 -->
+
+                        <section class="idealsteps-step">
+                            <h1 align="center">Elementos Textuais</h1>
+                            <div class="field">
+                                <label class="main">Introdução:</label>
+                                <textarea name="introducao" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Tema:</label>
+                                <textarea name="tema" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Problema:</label>
+                                <textarea name="problema" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Hipótese:</label>
+                                <textarea name="hipotese" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Objetivos:</label>
+                                <textarea name="objetivo" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Justificativa:</label>
+                                <textarea name="justificativa" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="prev">&laquo; Prev</button>
+                                <button type="button" class="next">Next &raquo;</button>
+                            </div>
+                        </section>
+
+                        <!-- Step 3 -->
+
+                        <section class="idealsteps-step">
+                            <h1 align="center">Desenvolvimento Inicial</h1>
+                            <div class="field">
+                                <label class="main">Referencial Teórico:</label>
+                                <textarea name="referencia" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Metodologia:</label>
+                                <textarea name="metodologia" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Recursos:</label>
+                                <textarea name="recurso" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Cronograma:</label>
+                                <textarea name="cronograma" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="prev">&laquo; Prev</button>
+                                <button type="button" class="next">Next &raquo;</button>
+                            </div>
+                        </section>
+
+                        <!-- Step 3 -->
+
+                        <section class="idealsteps-step">
+                            <h1 align="center">Capítulos e SubCapítulos</h1>
+                            <div class="field">
+                                <label class="main">Capítulo:</label>
+                                <textarea name="capitulo" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">SubCapítulo:</label>
+                                <textarea name="subcapitulo" cols="30" rows="10"></textarea>
+                                <span class="error"></span> </div>
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="prev">&laquo; Prev</button>
+                                <button type="button" class="next">Next &raquo;</button>
+                            </div>
+                        </section>
+
+                        <!-- Step 5 -->
+
+                        <section class="idealsteps-step">
+                            <h1 align="center">Bibliografia Impressa</h1>
+                            <div class="field">
+                                <label class="main">Nome do livro:</label>
+                                <input name="livro" type="text">
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Autor do Livro:</label>
+                                <input name="autor" type="text">
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Página Inicial:</label>
+                                <input name="paginai" type="text">
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Página Final:</label>
+                                <input name="paginaf" type="text">
+                                <span class="error"></span> </div>
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="prev">&laquo; Prev</button>
+                                <button type="submit" class="submit">Submit</button>
+                            </div>
+                        </section>
+
+                        <!-- Step 6 -->
+
+                        <section class="idealsteps-step">
+                            <h1 align="center">Bibliografia Virtual</h1>
+                            <div class="field">
+                                <label class="main">URL do Site:</label>
+                                <input name="url" type="text">
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Autor do Site:</label>
+                                <input name="autors" type="text">
+                                <span class="error"></span> </div>
+                            <div class="field">
+                                <label class="main">Data de Acesso:</label>
+                                <input name="acesso" type="date">
+                                <span class="error"></span> </div>
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="prev">&laquo; Prev</button>
+                                <button type="submit" class="submit">Submit</button>
+                            </div>
+                        </section>
+                    </div>
+                    <span id="invalid"></span>
+                </form>
+            </div>
+        </div>
+        <script src="js/min.js"></script> 
+        <script src="js/ui.js"></script> 
+        <script src="js/out/jquery.idealforms.js"></script> 
+        <script>
+
+            $('form.idealforms').idealforms({
+
+                silentLoad: false,
+
+                rules: {
+                    'name': 'required name ajax',
+                    'integrante': 'required integrante ajax',
+                    'date': 'required date',
+                    'descricao': 'required descricao ajax',
+                    'cidade': 'required cidade ajax',
+                    'introducao': 'required introducao ajax',
+                    'tema': 'required tema ajax',
+                    'problema': 'required problema ajax',
+                    'hipotese': 'required hipotese ajax',
+                    'objetivo': 'required objetivo ajax',
+                    'justificativa': 'required justificativa ajax',
+                    'referencia': 'required referencia ajax',
+                    'metodologia': 'required metodologia ajax',
+                    'recurso': 'required recurso ajax',
+                    'cronograma': 'required cronograma ajax',
+                    'capitulo': 'required capitulo ajax',
+                    'subcapitulo': 'required subcapitulo ajax',
+                    'autor': 'required autor ajax',
+                    'livro': 'required livro ajax',
+                    'paginai': 'required paginai ajax',
+                    'paginaf': 'required paginaf ajax'
+                },
+
+                errors: {
+                    'username': {
+                        ajaxError: 'Username not available'
+                    }
+                },
+                onSubmit: function(invalid, e) {
+                    e.preventDefault();
+                    $('#invalid')
+                        .show()
+                        .toggleClass('valid', ! invalid)
+                        .text(invalid ? (invalid +' invalid fields') : 'All good!');
+                }
+            });
+            $('form.idealforms').find('input, select, textarea').on('change keyup', function () {
+                $('#invalid').hide();
+            });
+            $('form.idealforms').idealforms('addRules', {
+                'comments': 'required minmax:50:200'
+            });
+            $('.prev').click(function () {
+                $('.prev').show();
+                $('form.idealforms').idealforms('prevStep');
+            });
+            $('.next').click(function () {
+                $('.next').show();
+                $('form.idealforms').idealforms('nextStep');
+            });
+        </script>
+    </body>
+</html>

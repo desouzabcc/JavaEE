@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<html>
+    <head>
+        <link rel="stylesheet" href="http://necolas.github.io/normalize.css/2.1.3/normalize.css">
+        <link rel="stylesheet" href="css/jquery.idealforms.css">        
+        <title>O Formatador</title>
+                    <style>
+            body {
+                max-width: 1080px;
+                margin: 2em auto;
+                font: normal 16px/1.5 Arial, sans-serif;
+                color: #000000;
+                overflow-y: scroll;
+                background-color: #728eaa;
+                background: -moz-linear-gradient(top, #25303C 0%, #728EAA 100%); /* firefox */   
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#B0E0E6)); /* webkit */
+            }
+            .content {
+                margin: 0 30px;
+            }
+            .field.buttons button {
+                margin-right: .5em;
+            }
+            .idealforms.adaptive .field.buttons label {
+                height: 0;
+            }
+        </style>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div align="center"><a href="index.html"><h1><img alt="O Formatador" src="img/logo.png"/></h1></a></div>
+        <div class="content">
+            <div class="idealsteps-container">
+                <nav class="idealsteps-nav"></nav>
+                <form action=Processa_Ufpr autocomplete="on" class="idealforms" method="POST">
+                    <div class="idealsteps-wrap"> 
+                        <h1  align="center">LOGIN</h1>
+                        <div class="field"><label class="main">Usu&aacuterio:</label><input name="user" type="text" data-idealforms-ajax="ajax.php"><span class="error"></span></div>
+                        <div class="field"><label class="main">Senha:</label><input name="pass" type="password" data-idealforms-ajax="ajax.php"><span class="error"></span></div>
+                        <div class="field buttons">
+                            <label class="main">&nbsp;</label>
+                            <button type="button">Entrar</button><br><br>
+                            <a href="Criar_login.html">Criar login</a> 
+                            <label class="main">&nbsp;</label>&nbsp;&nbsp;&nbsp;
+                            <a href="Redefinir.html">Esqueci minha senha</a>
+                            <br><br><br><br><br><br><br>
+                            <label class="main">&nbsp;</label>
+                            <a href="Entrada_ufpr.html">Clique aqui para Formata&ccedil&atildeo r&aacutepida sem login</a>
+                        </div>
+                    </div>
+                </form>
+                <br><br><br><br>
+            </div>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> 
+        <script src="js/out/jquery.idealforms.js"></script> 
+        <script>
+            $('form.idealforms').idealforms({
+                rules: {
+                    'user': 'required name ajax',
+                    'pass': 'required integrante ajax'
+                },
+                errors: {
+                    'username': {
+                        ajaxError: 'Username not available'
+                    }
+                },
+                onSubmit: function (invalid, e) {
+                    e.preventDefault();
+                    $('#invalid')
+                            .show()
+                            .toggleClass('valid', !invalid)
+                            .text(invalid ? (invalid + ' invalid fields') : 'All good!');
+                }});
+        </script>
+    </body>
+</html>
